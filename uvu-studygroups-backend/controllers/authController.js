@@ -1,32 +1,70 @@
-const bcrypt = require('bcryptjs');
+const User = require('../models/User');
+const argon2 = require('argon2');
 const jwt = require('jsonwebtoken');
-const db = require('../config/db');
 
-exports.register = (req, res) => {
-  const { firstName, lastName, studentId, email, password } = req.body;
-  const hashedPassword = bcrypt.hashSync(password, 10);
-  const query = 'INSERT INTO users (first_name, last_name, student_id, email, password) VALUES (?, ?, ?, ?, ?)';
+const authController = {};
 
-  db.query(query, [firstName, lastName, studentId, email, hashedPassword], (err, result) => {
-    if (err) return res.status(500).json({ message: 'Error registering user' });
+// Register method
+authController.register = async (req, res) => {
+    try {
+        const { firstName, lastName, studentId, email, password } = req.body;
 
-    res.status(201).json({ message: 'User registered successfully' });
-  });
+        // Check if user already exists
+        const existingUser = await User.findByEmail(email);
+        if (existingUser) {
+            return res.status(400).json({ message: 'User already exists' });
+        }
+
+        // Hash the password with Argon2
+        const hashedPassword = await argon2.hash(password);
+
+        // Create new user
+        const newUser = {
+            firstName,
+            lastName,
+            studentId,
+            email,
+            password: hashedPassword
+        };
+
+        await User.create(newUser);
+
+        res.status(201).json({ message: 'User registered successfully' });
+    } catch (err) {
+        console.error('Registration error:', err);
+        res.status(500).json({ message: 'Server error' });
+    }
 };
 
-exports.login = (req, res) => {
-  const { email, password } = req.body;
-  const query = 'SELECT * FROM users WHERE email = ?';
+// Login method
+authController.login = async (req, res) => {
+    try {
+        const { email, password } = req.body;
 
-  db.query(query, [email], (err, results) => {
-    if (err) return res.status(500).json({ message: 'Error logging in' });
-    if (results.length === 0) return res.status(400).json({ message: 'Invalid email or password' });
+        // Find user by email
+        const user = await User.findByEmail(email);
+        if (!user) {
+            return res.status(400).json({ message: 'Invalid credentials' });
+        }
 
-    const user = results[0];
-    const isPasswordValid = bcrypt.compareSync(password, user.password);
-    if (!isPasswordValid) return res.status(400).json({ message: 'Invalid email or password' });
+        console.log('User found in the database:', user);
 
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-    res.json({ token });
-  });
+        // Compare password with Argon2
+        const isMatch = await argon2.verify(user.password, password);
+        console.log('Password match:', isMatch);
+
+        if (!isMatch) {
+            return res.status(400).json({ message: 'Invalid credentials' });
+        }
+
+        // Generate JWT token
+        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+        res.json({ token });
+    } catch (err) {
+        console.error('Login error:', err);
+        res.status(500).json({ message: 'Server error' });
+    }
 };
+
+module.exports = authController;

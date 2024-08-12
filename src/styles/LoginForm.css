@@ -15,7 +15,16 @@
   padding: 1rem; /* Padding for the header */
 }
 
-.login-form-container {
+.login-form-wrapper {
+  min-height: 600px; /* Adjust the height based on the form content */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form-container,
+.success-card {
   background-color: #275D38;
   padding: 2rem; /* Adjusted padding */
   border-radius: 10px;
@@ -24,6 +33,15 @@
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.success-card {
+  margin-top: -850px; /* Negative margin to bring the card closer to the header */
+  margin-bottom: -800px; 
+}
+
+.success-card h2 {
+  margin-bottom: 2rem; /* Padding under the success message */
 }
 
 .discord-button img {
@@ -82,7 +100,7 @@
   width: 100%;
   max-width: 250px; /* Centering button */
   display: block;
-  margin: 0 auto;
+  margin: 2rem auto 1rem auto; /* Add margin to the button for spacing */
 }
 
 .btn-green:hover {
@@ -133,8 +151,18 @@
   margin-bottom: 1.5rem; /* Increased bottom margin for spacing */
 }
 
+.error-message {
+  color: #FF0000; /* Red color for error message */
+  font-weight: bold; /* Increased font weight */
+  text-align: left; /* Align text to the left */
+  margin-top: -1rem; /* Space above the error message */
+  margin-bottom: 1rem; /* Space below the error message */
+  padding-left: 1rem; /* Increased padding to align with the input labels */
+}
+
 @media (max-width: 1024px) {
-  .login-form-container {
+  .login-form-container,
+  .success-card {
     padding: 2rem;
     max-width: 90%;
   }
@@ -155,7 +183,8 @@
 }
 
 @media (max-width: 768px) {
-  .login-form-container {
+  .login-form-container,
+  .success-card {
     padding: 2rem;
     max-width: 90%;
     margin: 0 6%;

@@ -9,8 +9,8 @@ import Footer from './components/Footer';
 import JoinStudyGroup from './components/JoinStudyGroup';
 import JoinGroup from './components/JoinGroup';
 import CreateStudyGroup from './components/CreateStudyGroup';
-import LoginForm from './components/LoginForm';  // Import the new LoginForm component
-import SignUpForm from './components/SignUpForm';  // Import the new SignUpForm component
+import LoginForm from './components/LoginForm';
+import SignUpForm from './components/SignUpForm';
 
 import './styles/index.css';
 import './styles/SearchForStudyGroups.css';
@@ -20,8 +20,8 @@ import './styles/StudentResources.css';
 import './styles/Footer.css';
 import './styles/CreateStudyGroup.css';
 import './styles/JoinGroup.css';
-import './styles/LoginForm.css';  // Import LoginForm styles
-import './styles/SignUpForm.css';  // Import SignUpForm styles
+import './styles/LoginForm.css';
+import './styles/SignUpForm.css';
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState('home');
@@ -45,9 +45,9 @@ const App = () => {
       case 'create-study-group':
         return <CreateStudyGroup setCurrentPage={setCurrentPage} />;
       case 'login':
-        return <LoginForm />;
+        return <LoginForm setCurrentPage={setCurrentPage} />;
       case 'sign-up':
-        return <SignUpForm />;  // Render the SignUpForm component
+        return <SignUpForm setCurrentPage={setCurrentPage} />;
       default:
         return (
           <>
