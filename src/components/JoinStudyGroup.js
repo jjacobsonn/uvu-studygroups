@@ -19,7 +19,7 @@ const JoinStudyGroup = ({ setCurrentPage }) => {
             JOIN A <span style={{ fontWeight: 'bold' }}>STUDY GROUP</span>
           </h2>
           <p className="lato-regular mb-6">
-            Lorem ipsum dolor sit amet consectetur. At nascetur commodo et hendrerit massa. Mi interdum massa diam convallis metus nunc elit. Molestie duis ipsum eget turpis. Nisl odio quisque turpis nibh nibh sit. Netus duis aliquam tincidunt egestas dignissim porta aenean vitae facilisi. Euismod imperdiet massa nisl laoreet ut tristique turpis nullam sed. Et consectetur egestas augue nisi nec est metus. Velit nisi proin consequat pellentesque volutpat duis imperdiet semper dictum.
+            Welcome to the "Join Study Groups" section of our platform, where collaboration meets convenience. Here, you can explore and join study groups tailored to your courses and interests. Whether you're looking to deepen your understanding of a specific subject, connect with peers who share your academic goals, or simply need a support system to stay motivated, our study groups provide the perfect environment for learning together. Joining a group is simple—browse the available groups, find one that fits your needs, and start participating in discussions, sharing resources, and preparing for exams alongside like-minded students. Elevate your academic experience by joining a study group today, and discover the power of collective learning.
           </p>
           <button 
             className="outline-button"

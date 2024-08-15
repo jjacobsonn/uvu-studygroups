@@ -20,7 +20,7 @@ const port = process.env.PORT || 5001;
 
 // Middleware
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({ origin: 'http://localhost:3000' })); // Allow requests from React frontend
 
 // No need to create a new connection here since it's done in db.js
 

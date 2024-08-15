@@ -8,15 +8,14 @@
 }
 
 .page-header {
-  color: #275D38; /* Same green color as the form */
-  font-size: 2.5rem; /* Page title font size */
+  color: #275D38;
+  font-size: 2.5rem;
   font-weight: bold;
-  margin-bottom: 2rem; /* Space below the page header */
-  padding: 1rem; /* Padding for the header */
+  margin-bottom: 2rem;
+  padding: 1rem;
 }
 
 .login-form-wrapper {
-  min-height: 600px; /* Adjust the height based on the form content */
   width: 100%;
   display: flex;
   justify-content: center;
@@ -26,7 +25,7 @@
 .login-form-container,
 .success-card {
   background-color: #275D38;
-  padding: 2rem; /* Adjusted padding */
+  padding: 2rem;
   border-radius: 10px;
   margin-top: 2rem;
   max-width: 800px;
@@ -36,12 +35,12 @@
 }
 
 .success-card {
-  margin-top: -850px; /* Negative margin to bring the card closer to the header */
-  margin-bottom: -800px; 
+  margin-top: -850px;
+  margin-bottom: -800px;
 }
 
 .success-card h2 {
-  margin-bottom: 2rem; /* Padding under the success message */
+  margin-bottom: 2rem;
 }
 
 .discord-button img {
@@ -52,20 +51,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem; /* Increased padding for larger size */
-  font-size: 1.75rem; /* Increased font size for the text */
+  padding: 1.5rem;
+  font-size: 1.75rem;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .discord-icon {
-  width: 60px; /* Adjusted size for a larger icon */
+  width: 60px;
   height: auto;
 }
 
 .discord-button:hover {
-  background-color: #e2e2e2; /* Optional: Add a hover effect for better UX */
+  background-color: #e2e2e2;
 }
 
 .form-group label {
@@ -98,9 +97,9 @@
   cursor: pointer;
   transition: background-color 0.3s;
   width: 100%;
-  max-width: 250px; /* Centering button */
+  max-width: 250px;
   display: block;
-  margin: 2rem auto 1rem auto; /* Add margin to the button for spacing */
+  margin: 1rem auto; /* Controlled margin for better spacing */
 }
 
 .btn-green:hover {
@@ -114,50 +113,72 @@
   margin: 1rem auto 2rem auto;
 }
 
-/* Increased font size and spacing for subheading and labels */
-.login-form-container p {
-  font-size: 1.125rem; /* Increased font size for subheading */
-  margin-bottom: 1.5rem; /* Additional spacing below */
+.create-study-group-header {
+  margin-top: 2rem;
 }
 
-.or-sign-in-text {
-  margin-top: 2rem; /* Added top margin for spacing */
+.create-study-group-line-with-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 
-.or-sign-in-text span {
-  font-size: 1.25rem; /* Increased font size */
+.create-study-group-line {
+  height: 1px;
+  background-color: #275D38;
+  width: 36%;
+  margin: 0 3.3rem;
+  flex-grow: 0;
 }
 
-.remember-me-label,
-.forgot-password-link {
-  font-size: 1.25rem; /* Increased font size */
+.create-study-group-icon {
+  width: 50px;
+  height: auto;
+  padding: 0 0.5rem;
 }
 
-.remember-me-label {
-  padding-left: 2rem; /* Added left padding */
+/* Aligning "Remember me" and "Forgot password?" */
+.remember-forgot-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  padding-left: 25px; /* Adjust this value as needed */
+  padding-right: 25px; /* Adjust this value as needed */
 }
 
-.forgot-password-link {
-  padding-right: 2rem; /* Added right padding */
+.remember-me-container {
+  display: flex;
+  align-items: center;
 }
 
 .custom-checkbox {
-  width: 20px; /* Increased checkbox size */
-  height: 20px;
-  margin-right: 8px; /* Added right margin for spacing */
+  margin-right: 8px;
 }
 
-.form-group-password {
-  margin-bottom: 1.5rem; /* Increased bottom margin for spacing */
+.remember-me-label {
+  font-size: 1.25rem;
+  margin-left: 0;
+  display: inline-flex;
+  align-items: center; /* Ensure the label is aligned vertically */
+  white-space: nowrap; /* Prevents text from wrapping to the next line */
+}
+
+.forgot-password-link {
+  font-size: 1.25rem;
+  text-align: right;
 }
 
 .error-message {
-  color: #FF0000; /* Red color for error message */
-  font-weight: bold; /* Increased font weight */
-  text-align: left; /* Align text to the left */
-  margin-top: -1rem; /* Space above the error message */
-  margin-bottom: 1rem; /* Space below the error message */
-  padding-left: 1rem; /* Increased padding to align with the input labels */
+  color: #FF0000;
+  font-weight: bold;
+  text-align: left;
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
 }
 
 @media (max-width: 1024px) {
@@ -174,11 +195,6 @@
 
   .btn-green {
     padding: 0.5rem 1rem;
-  }
-
-  .custom-checkbox {
-    width: 18px; /* Adjusted size for smaller screens */
-    height: 18px;
   }
 }
 
@@ -199,34 +215,37 @@
     padding: 0.5rem 1rem;
   }
 
-  .custom-checkbox {
-    width: 16px; /* Adjusted size for even smaller screens */
-    height: 16px;
-  }
-
   .discord-button {
-    font-size: 1.25rem; /* Reduced font size */
-    padding: 1rem; /* Reduced padding */
+    font-size: 1.25rem;
+    padding: 1rem;
   }
 
-  .flex.items-center.justify-between.mb-6 {
-    display: flex;
-    flex-direction: column; /* Stack the elements vertically */
-    align-items: center; /* Center items horizontally */
-    text-align: center;
+  /* Ensure they stay on the same line */
+  .remember-forgot-container {
+    flex-direction: row;
+    text-align: left;
   }
 
   .remember-me-label,
   .forgot-password-link {
-    width: 100%;
-    margin: 0; /* Reset margins */
+    width: auto; /* Ensure width doesn't cause stacking */
+    margin: 0;
   }
 
   .forgot-password-link {
-    margin-top: 1rem; /* Add margin to the top for separation */
+    margin-left: auto; /* Push it to the far right */
   }
 
+  /* Keep "Remember me" on one line */
   .remember-me-label {
-    margin-bottom: 1rem; /* Add margin to the bottom for separation */
+    white-space: nowrap; /* Prevents wrapping */
+    display: flex;
+    align-items: center;
+  }
+
+  /* Adjust checkbox and label alignment */
+  .remember-me-container {
+    display: flex;
+    align-items: center;
   }
 }

@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Banner from './Banner';
 import StudentResources from './StudentResources';
 import discordIcon from '../icons/discord.png';
+import customIcon from '../icons/dg-person-7.png';
+import studyGroupImage from '../images/img-5.jpg';
 
-const LoginForm = () => {
+const LoginForm = ({ setCurrentPage }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+
+  // Scroll to the top of the page when the component loads
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -19,12 +26,13 @@ const LoginForm = () => {
         },
         body: JSON.stringify({ email, password }),
       });
-      
+
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem('token', data.token); // Store JWT token
         setIsAuthenticated(true);
         setErrorMessage('');
+        setCurrentPage('welcome'); // Redirect to the Welcome Page after login
       } else {
         setErrorMessage('The username or password you entered is incorrect.');
       }
@@ -36,13 +44,40 @@ const LoginForm = () => {
   return (
     <div className="App app-container">
       <Banner />
+
+      {/* New Section: Header, Image, Lines, and Icon */}
+      <div className="flex flex-col md:flex-row justify-between items-center p-8" style={{ background: '#FFFFFF' }}>
+        <div className="md:w-1/2 p-4">
+          <h2 className="text-3xl font-bold rajdhani-bold mb-4" style={{ color: '#275D38' }}>
+            LOGIN TO YOUR <span style={{ fontWeight: 'bold' }}>STUDY GROUP</span>
+          </h2>
+          <p className="lato-regular mb-6">
+            Welcome to the UVU Study Groups login page, where your next step towards academic success begins. By logging in, you gain access to a dynamic platform designed to enhance your learning experience through collaboration and shared knowledge. Here, you can seamlessly join your study groups, access vital course materials, and engage in productive discussions with your peers. Whether you're here to catch up on assignments, prepare for exams, or dive into group projects, logging in ensures that you are connected to the resources and people that will help you achieve your goals. Secure your spot in the academic community and take advantage of the powerful tools at your fingertips.
+          </p>
+        </div>
+        <div className="md:w-1/2">
+          <img src={studyGroupImage} alt="Study Group" className="home-abt-image" />
+        </div>
+      </div>
+      <div className="create-study-group-header text-center mb-8">
+        <h2 className="text-4xl text-green-800 font-bold mb-4">SECURE YOUR SPOT IN A STUDY GROUP</h2>
+        <div className="create-study-group-line-with-icon flex items-center justify-center">
+          <div className="create-study-group-line border-t border-green-800 flex-grow mx-4"></div>
+          <img src={customIcon} alt="Icon" className="create-study-group-icon" />
+          <div className="create-study-group-line border-t border-green-800 flex-grow mx-4"></div>
+        </div>
+      </div>
+      {/* End of New Section */}
+
       <div className="login-page-container py-8">
-        <h1 className="page-header text-center text-green-800 text-4xl rajdhani-bold mb-4">Login To Your Study Group</h1>
         <div className="login-form-wrapper">
           {isAuthenticated ? (
             <div className="success-card bg-green-800 rounded-lg p-8 max-w-md mx-auto">
               <h2 className="text-center text-white text-3xl rajdhani-bold mb-4">Logged In Successfully</h2>
-              <button className="btn-green w-full mx-auto mt-6 mb-6">
+              <button
+                className="btn-green w-full mx-auto mt-6 mb-6"
+                onClick={() => setCurrentPage('welcome')} // Redirect to the Welcome Page when clicking the button
+              >
                 View Study Groups
               </button>
             </div>
@@ -84,13 +119,16 @@ const LoginForm = () => {
                   />
                 </div>
                 {errorMessage && <p className="error-message text-red-500 mb-4">{errorMessage}</p>}
-                <div className="flex items-center justify-between mb-6">
-                  <label className="text-white flex items-center remember-me-label pl-2">
-                    <input type="checkbox" className="mr-2 custom-checkbox" />
-                    Remember me
-                  </label>
-                  <a href="#" className="text-white forgot-password-link pr-2">Forgot password?</a>
+                
+                {/* Updated Section for "Remember me" and "Forgot password?" */}
+                <div className="remember-forgot-container mb-6">
+                  <div className="remember-me-container">
+                    <input type="checkbox" className="custom-checkbox" />
+                    <label className="text-white remember-me-label">Remember me</label>
+                  </div>
+                  <a href="#" className="text-white forgot-password-link">Forgot password?</a>
                 </div>
+
                 <button type="submit" className="btn-green w-full mx-auto">LOGIN</button>
               </form>
             </div>

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import Banner from './Banner';
 import StudentResources from './StudentResources';
+import customIcon from '../icons/dg-person-7.png';
+import signupImage from '../images/img-6.jpg'; // Replace with the actual path to your image
 import discordIcon from '../icons/discord.png';
 
-const SignUpForm = () => {
+const SignUpForm = ({ setCurrentPage }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [studentId, setStudentId] = useState('');
@@ -30,10 +32,8 @@ const SignUpForm = () => {
       });
 
       if (response.ok) {
-        // Redirect to login page or display a success message
         setErrorMessage('');
-        // For example, redirect to login
-        window.location.href = '/login';
+        setCurrentPage('login'); // Use setCurrentPage to navigate to the login page
       } else {
         const errorData = await response.json();
         setErrorMessage(errorData.message || 'An error occurred during registration.');
@@ -46,8 +46,28 @@ const SignUpForm = () => {
   return (
     <div className="App app-container">
       <Banner />
+      <div className="flex flex-col md:flex-row justify-between items-center p-8" style={{ background: '#FFFFFF' }}>
+        <div className="md:w-1/2 p-4">
+          <h2 className="text-3xl font-bold rajdhani-bold mb-4" style={{ color: '#275D38' }}>
+            CREATE YOUR <span style={{ fontWeight: 'bold' }}>ACCOUNT</span>
+          </h2>
+          <p className="lato-regular mb-6">
+            Creating an account with UVU Study Groups unlocks a world of academic collaboration and support tailored just for you. By signing up, you'll gain access to exclusive study groups, personalized resources, and a community of like-minded students who are all working towards the same goals. Simply fill out the form below with your details, and you'll be on your way to joining study sessions, accessing course-specific materials, and connecting with peers who can help you excel in your studies. Your journey to academic success starts with creating your account—let’s get started!
+          </p>
+        </div>
+        <div className="md:w-1/2">
+          <img src={signupImage} alt="Sign Up" className="home-abt-image" />
+        </div>
+      </div>
+      <div className="create-study-group-header text-center mb-8">
+        <h2 className="text-4xl text-green-800 font-bold mb-4">JOIN THE COMMUNITY</h2>
+        <div className="create-study-group-line-with-icon flex items-center justify-center">
+          <div className="create-study-group-line border-t border-green-800 flex-grow mx-4"></div>
+          <img src={customIcon} alt="Icon" className="create-study-group-icon" />
+          <div className="create-study-group-line border-t border-green-800 flex-grow mx-4"></div>
+        </div>
+      </div>
       <div className="sign-up-page-container py-8">
-        <h1 className="page-header text-center text-green-800 text-4xl rajdhani-bold mb-6">Get Started Create Your Account</h1>
         <div className="sign-up-form-container bg-green-800 rounded-lg p-8 max-w-lg mx-auto">
           <h2 className="text-center text-white text-3xl rajdhani-bold mb-4">REGISTER BELOW</h2>
           <p className="text-center text-white mb-4 text-lg">Study with a group starting today</p>

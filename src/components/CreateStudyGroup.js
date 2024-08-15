@@ -15,7 +15,7 @@ const CreateStudyGroup = ({ setCurrentPage }) => {
             CREATE YOUR <span style={{ fontWeight: 'bold' }}>STUDY GROUP</span>
           </h2>
           <p className="lato-regular mb-6">
-            Lorem ipsum dolor sit amet consectetur. At nascetur commodo et hendrerit massa. Mi interdum massa diam convallis metus nunc elit. Molestie duis ipsum eget turpis. Nisl odio quisque turpis nibh nibh sit. Netus duis aliquam tincidunt egestas dignissim porta aenean vitae facilisi. Euismod imperdiet massa nisl laoreet ut tristique turpis nullam sed. Et consectetur egestas augue nisi nec est metus. Velit nisi proin consequat pellentesque volutpat duis imperdiet semper dictum.
+            The "Create a Group" section empowers you to take the lead in your academic journey by forming your own study group. Whether you have a specific study focus, a project that requires team collaboration, or a desire to connect with classmates on a deeper level, creating a group gives you control over your learning environment. Simply choose a subject, set your group's objectives, and invite peers who share your goals. This section is designed to make it easy for you to establish a productive space where you can share resources, plan study sessions, and motivate each other to succeed. Start your own study group today and build a community of learners who will support you every step of the way.
           </p>
         </div>
         <div className="md:w-1/2">

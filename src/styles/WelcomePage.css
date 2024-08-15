@@ -1,0 +1,102 @@
+.welcome-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 4.75rem; /* Adjusted padding for a balanced top space */
+  padding-bottom: 2.75rem; /* Adjusted padding for a balanced bottom space */
+}
+
+.page-header {
+  color: #275D38; /* Same green color as the form */
+  font-size: 2.5rem; /* Page title font size */
+  font-weight: bold;
+  margin-bottom: 1.5rem; /* Reduced space below the page header */
+  padding: 1rem; /* Padding for the header */
+}
+
+.welcome-card {
+  background-color: #275D38;
+  padding: 4rem 2rem; /* Increased padding on top and bottom */
+  border-radius: 10px;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.welcome-card h2 {
+  margin-bottom: 1.5rem; /* Reduced padding under the success message */
+}
+
+.welcome-card p {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem; /* Reduced space below the paragraph */
+}
+
+.btn-green {
+  background-color: #1D3E2C;
+  color: #FFFFFF;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 24px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+  max-width: 250px; /* Centering button */
+  display: block;
+  margin: 1rem auto; /* Add margin to the button for spacing */
+}
+
+.btn-green:hover {
+  background-color: #143222;
+}
+
+/* New styles for header, image, lines, and icon section */
+.create-study-group-header {
+  margin-top: 0.5rem; /* Adjusted margin-top */
+  margin-bottom: 0.5rem; /* Adjusted margin-bottom */
+}
+
+.create-study-group-line-with-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.25rem; /* Adjusted margin-top */
+  margin-bottom: 0.25rem; /* Adjusted margin-bottom */
+}
+
+.create-study-group-line {
+  height: 1px;
+  background-color: #275D38;
+  width: 36%;
+  margin: 0 2rem; /* Reduced margin on the sides of the lines */
+  flex-grow: 0;
+}
+
+.create-study-group-icon {
+  width: 40px; /* Adjusted the size of the icon */
+  height: auto;
+  padding: 0 0.3rem; /* Adjusted padding around the icon */
+}
+
+.home-abt-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+@media (max-width: 1024px) {
+  .home-abt-image {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-abt-image {
+    width: 100%;
+  }
+}

@@ -11,6 +11,7 @@ import JoinGroup from './components/JoinGroup';
 import CreateStudyGroup from './components/CreateStudyGroup';
 import LoginForm from './components/LoginForm';
 import SignUpForm from './components/SignUpForm';
+import WelcomePage from './components/WelcomePage';
 
 import './styles/index.css';
 import './styles/SearchForStudyGroups.css';
@@ -22,6 +23,7 @@ import './styles/CreateStudyGroup.css';
 import './styles/JoinGroup.css';
 import './styles/LoginForm.css';
 import './styles/SignUpForm.css';
+import './styles/WelcomePage.css';
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState('home');
@@ -48,6 +50,8 @@ const App = () => {
         return <LoginForm setCurrentPage={setCurrentPage} />;
       case 'sign-up':
         return <SignUpForm setCurrentPage={setCurrentPage} />;
+      case 'welcome':
+        return <WelcomePage setCurrentPage={setCurrentPage} />;
       default:
         return (
           <>
