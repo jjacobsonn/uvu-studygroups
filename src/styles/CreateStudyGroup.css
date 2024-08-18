@@ -1,194 +1,198 @@
 .create-study-group-header {
-    margin-top: 2rem;
-  }
-  
-  .create-study-group-line-with-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-  }
-  
-  .create-study-group-line {
-    height: 1px;
-    background-color: #275D38;
-    width: 36%;
-    margin: 0 3.3rem;
-    flex-grow: 0;
-  }
-  
-  .create-study-group-icon {
-    width: 50px;
-    height: auto;
-    padding: 0 0.5rem;
-  }
-  
+  margin-top: 2rem;
+}
+
+.create-study-group-line-with-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.create-study-group-line {
+  height: 1px;
+  background-color: #275D38;
+  width: 36%;
+  margin: 0 3.3rem;
+  flex-grow: 0;
+}
+
+.create-study-group-icon {
+  width: 50px;
+  height: auto;
+  padding: 0 0.5rem;
+}
+
+/* Add spacing below the header */
+.create-study-group-text {
+  margin-top: 3rem; /* Adjust this value to increase or decrease the spacing */
+}
+
+.create-group-form-container {
+  background-color: #275D38;
+  padding: 2rem;
+  border-radius: 10px;
+  margin-top: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.create-group-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: 0 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin: 0 1rem;
+}
+
+.form-group label {
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.form-control {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: black;
+  background-color: white;
+  width: 100%;
+}
+
+.btn-green {
+  background-color: #1D3E2C;
+  color: #FFFFFF;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 24px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.btn-green:hover {
+  background-color: #143222;
+}
+
+.line-divider {
+  width: 90%;
+  height: 1px;
+  background-color: #FFFFFF;
+  margin: 1rem auto 2rem auto;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 1rem;
+  margin-top: 2rem; /* Ensure spacing above the checkbox */
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.checkbox-label .checkbox-text {
+  font-size: 1.5rem; /* Increase font size for the checkbox label */
+  margin-left: 10px; /* Add spacing between the checkbox and the label text */
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 20px; /* Size of the checkbox */
+  height: 20px; /* Size of the checkbox */
+  margin-right: 25px; /* Space between checkbox and label */
+  transform: scale(1.2); /* Increase the size of the checkbox */
+}
+
+@media (max-width: 1024px) {
   .create-group-form-container {
-    background-color: #275D38;
     padding: 2rem;
-    border-radius: 10px;
-    margin-top: 2rem;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 90%;
   }
-  
+
   .create-group-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    padding: 0 2rem;
+    grid-template-columns: 1fr; /* Make each form group span the full width */
+    padding: 0;
   }
-  
+
   .form-group {
-    display: flex;
-    flex-direction: column;
-    margin: 0 1rem;
+    margin: 0 0.5rem;
+    grid-column: span 2; /* Ensure form groups take full width */
   }
-  
-  .form-group label {
-    font-weight: bold;
-    font-size: 1.25rem;
-    color: white;
-    margin-bottom: 0.5rem;
-  }
-  
+
   .form-control {
-    padding: 0.75rem;
-    border: none;
-    border-radius: 5px;
-    font-family: 'Lato', sans-serif;
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: black;
-    background-color: white;
-    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    padding-left: 1rem;
   }
-  
-  .btn-green {
-    background-color: #1D3E2C;
-    color: #FFFFFF;
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 600;
-    padding: 0.75rem 1.5rem;
-    border-radius: 24px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 0.75rem;
-    margin-bottom: 0.75rem;
-  }
-  
-  .btn-green:hover {
-    background-color: #143222;
-  }
-  
-  .line-divider {
-    width: 90%;
-    height: 1px;
-    background-color: #FFFFFF;
-    margin: 1rem auto 2rem auto;
-  }
-  
+
   .checkbox-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-left: 1rem;
-    margin-top: 2rem; /* Ensure spacing above the checkbox */
+    margin-top: 2rem; /* Maintain top margin for consistency */
   }
-  
-  .checkbox-label {
-    display: flex;
-    align-items: center;
-    color: white;
-    font-size: 1.25rem;
-    line-height: 1.2;
-  }
-  
+
+  .form-group label,
   .checkbox-label .checkbox-text {
-    font-size: 1.5rem; /* Increase font size for the checkbox label */
-    margin-left: 10px; /* Add spacing between the checkbox and the label text */
+    font-size: 1.4rem; /* Slightly reduce font size for smaller screens */
   }
-  
+
+  .form-control {
+    font-size: 1rem; /* Reduce input font size for better fit */
+  }
+}
+
+@media (max-width: 768px) {
+  .create-group-form-container {
+    padding: 2rem;
+    max-width: 90%;
+    margin: 0 6%;
+  }
+
+  .create-group-form {
+    grid-template-columns: 1fr; /* Make each form group span the full width */
+    padding: 0;
+  }
+
+  .form-group {
+    margin: 0 0.5rem;
+    grid-column: span 2; /* Ensure form groups take full width */
+  }
+
+  .form-control {
+    padding: 0.5rem;
+    font-size: 0.875rem; /* Further reduce font size for very small screens */
+    padding-left: 1rem;
+  }
+
+  .checkbox-container {
+    margin-top: 2rem; /* Ensure spacing above the checkbox on mobile */
+  }
+
+  .form-group label,
+  .checkbox-label .checkbox-text {
+    font-size: 1rem; /* Slightly reduce font size for smaller screens */
+  }
+
   .checkbox-label input[type="checkbox"] {
-    width: 20px; /* Size of the checkbox */
-    height: 20px; /* Size of the checkbox */
-    margin-right: 25px; /* Space between checkbox and label */
-    transform: scale(1.2); /* Increase the size of the checkbox */
+    transform: scale(1.1); /* Adjust checkbox size for smaller screens */
   }
-  
-  @media (max-width: 1024px) {
-    .create-group-form-container {
-      padding: 2rem;
-      max-width: 90%;
-    }
-  
-    .create-group-form {
-      grid-template-columns: 1fr; /* Make each form group span the full width */
-      padding: 0;
-    }
-  
-    .form-group {
-      margin: 0 0.5rem;
-      grid-column: span 2; /* Ensure form groups take full width */
-    }
-  
-    .form-control {
-      padding: 0.5rem;
-      font-size: 1rem;
-      padding-left: 1rem;
-    }
-  
-    .checkbox-container {
-      margin-top: 2rem; /* Maintain top margin for consistency */
-    }
-  
-    .form-group label,
-    .checkbox-label .checkbox-text {
-      font-size: 1.4rem; /* Slightly reduce font size for smaller screens */
-    }
-  
-    .form-control {
-      font-size: 1rem; /* Reduce input font size for better fit */
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .create-group-form-container {
-      padding: 2rem;
-      max-width: 90%;
-      margin: 0 6%;
-    }
-  
-    .create-group-form {
-      grid-template-columns: 1fr; /* Make each form group span the full width */
-      padding: 0;
-    }
-  
-    .form-group {
-      margin: 0 0.5rem;
-      grid-column: span 2; /* Ensure form groups take full width */
-    }
-  
-    .form-control {
-      padding: 0.5rem;
-      font-size: 0.875rem; /* Further reduce font size for very small screens */
-      padding-left: 1rem;
-    }
-  
-    .checkbox-container {
-      margin-top: 2rem; /* Ensure spacing above the checkbox on mobile */
-    }
-  
-    .form-group label,
-    .checkbox-label .checkbox-text {
-      font-size: 1rem; /* Slightly reduce font size for smaller screens */
-    }
-  
-    .checkbox-label input[type="checkbox"] {
-      transform: scale(1.1); /* Adjust checkbox size for smaller screens */
-    }
-  }
-  
+}

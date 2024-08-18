@@ -1,3 +1,5 @@
+/* Existing styles */
+
 .sign-up-page-container {
   display: flex;
   justify-content: center;
@@ -113,6 +115,41 @@
 
 .or-sign-in-text span {
   font-size: 1.25rem; /* Increased font size */
+}
+
+/* New styles for header, image, lines, and icon */
+
+.create-study-group-header {
+  margin-top: 2rem;
+}
+
+.create-study-group-line-with-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.create-study-group-line {
+  height: 1px;
+  background-color: #275D38;
+  width: 36%;
+  margin: 0 3.3rem;
+  flex-grow: 0;
+}
+
+.create-study-group-icon {
+  width: 50px;
+  height: auto;
+  padding: 0 0.5rem;
+}
+
+.flex.items-center.justify-between.mb-6 {
+  display: flex;
+  flex-direction: column; /* Stack the elements vertically */
+  align-items: center; /* Center items horizontally */
+  text-align: center;
 }
 
 @media (max-width: 1024px) {
