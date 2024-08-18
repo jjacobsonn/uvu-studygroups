@@ -29,7 +29,7 @@ const CreateStudyGroup = ({ setCurrentPage }) => {
           <img src={customIcon} alt="Icon" className="create-study-group-icon" />
           <div className="create-study-group-line border-t border-green-800 flex-grow mx-4"></div>
         </div>
-        <p className="text-green-800 lato-regular mb-8" style={{ fontSize: '1.25rem' }}>
+        <p className="text-green-800 lato-regular mb-8 create-study-group-text" style={{ fontSize: '1.25rem' }}>
           Create a group to invite other students to join you in collaborative study sessions.
         </p>
       </div>
