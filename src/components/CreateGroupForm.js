@@ -1,42 +1,32 @@
 import React, { useState } from 'react';
-import axios from '../anxiosInstance'; // Updated axios instance import
+import axios from '../anxiosInstance';
 
-const CreateGroupForm = () => {
+const CreateGroupForm = ({ setCurrentPage }) => {
     const [groupName, setGroupName] = useState('');
     const [courseName, setCourseName] = useState('');
     const [description, setDescription] = useState('');
     const [meetingDay, setMeetingDay] = useState('');
     const [meetingTime, setMeetingTime] = useState('');
     const [location, setLocation] = useState('');
-    const [groupSize, setGroupSize] = useState('');
+    const [maxSize, setMaxSize] = useState(10); // Default to 10 if not set
     const [allowJoin, setAllowJoin] = useState(false);
     const [message, setMessage] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form Data:', {
-            groupName,
-            courseName,
-            description,
-            meetingDay,
-            meetingTime,
-            location,
-            groupSize,
-            allowJoin
-        });
 
         const token = localStorage.getItem('token');
 
         try {
             const response = await axios.post('/study-groups', {
-                groupName,  // Ensure this matches the field in your backend
-                courseName,
+                group_name: groupName,
+                course_name: courseName,
                 description,
-                meetingDay,
-                meetingTime,
+                meeting_day: meetingDay,
+                meeting_time: meetingTime,
                 location,
-                maxSize: groupSize,
-                allowJoin
+                max_size: parseInt(maxSize) || 10, // Ensure max_size is an integer
+                allow_join: allowJoin
             }, {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -44,8 +34,8 @@ const CreateGroupForm = () => {
             });
 
             if (response.status === 201) {
-                console.log('Group created:', response.data); // Log successful response
                 setMessage('Study group created successfully!');
+                setCurrentPage('home');
                 // Reset form fields
                 setGroupName('');
                 setCourseName('');
@@ -53,14 +43,12 @@ const CreateGroupForm = () => {
                 setMeetingDay('');
                 setMeetingTime('');
                 setLocation('');
-                setGroupSize('');
+                setMaxSize(10);
                 setAllowJoin(false);
             } else {
-                console.error('Unexpected response:', response); // Log unexpected response
                 setMessage('Unexpected response from the server.');
             }
         } catch (error) {
-            console.error('Error creating group:', error); // Log any errors
             setMessage('Error creating study group. Please try again.');
         }
     };
@@ -76,19 +64,42 @@ const CreateGroupForm = () => {
             <form className="create-group-form grid gap-4" onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label className="text-white">Group Name</label>
-                    <input type="text" placeholder="Enter your group name" className="form-control bg-white text-green-800" value={groupName} onChange={(e) => setGroupName(e.target.value)} />
+                    <input 
+                        type="text" 
+                        placeholder="Enter your group name" 
+                        className="form-control bg-white text-green-800" 
+                        value={groupName} 
+                        onChange={(e) => setGroupName(e.target.value)} 
+                        required
+                    />
                 </div>
                 <div className="form-group">
                     <label className="text-white">Course Name</label>
-                    <input type="text" placeholder="Enter your course name" className="form-control bg-white text-green-800" value={courseName} onChange={(e) => setCourseName(e.target.value)} />
+                    <input 
+                        type="text" 
+                        placeholder="Enter your course name" 
+                        className="form-control bg-white text-green-800" 
+                        value={courseName} 
+                        onChange={(e) => setCourseName(e.target.value)} 
+                        required
+                    />
                 </div>
                 <div className="form-group col-span-2">
                     <label className="text-white">Describe Your Group's Focus and Goals</label>
-                    <textarea placeholder="Enter a short description of your group" className="form-control bg-white text-green-800" rows="4" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                    <textarea 
+                        placeholder="Enter a short description of your group" 
+                        className="form-control bg-white text-green-800" 
+                        rows="4" 
+                        value={description} 
+                        onChange={(e) => setDescription(e.target.value)}
+                    ></textarea>
                 </div>
                 <div className="form-group">
                     <label className="text-white">Select Meeting Day</label>
-                    <select className="form-control bg-white text-green-800" value={meetingDay} onChange={(e) => setMeetingDay(e.target.value)}>
+                    <select 
+                        className="form-control bg-white text-green-800" 
+                        value={meetingDay} 
+                        onChange={(e) => setMeetingDay(e.target.value)}>
                         <option value="" disabled>Select Meeting Day</option>
                         <option value="Monday">Monday</option>
                         <option value="Tuesday">Tuesday</option>
@@ -101,7 +112,10 @@ const CreateGroupForm = () => {
                 </div>
                 <div className="form-group">
                     <label className="text-white">Select Meeting Time</label>
-                    <select className="form-control bg-white text-green-800" value={meetingTime} onChange={(e) => setMeetingTime(e.target.value)}>
+                    <select 
+                        className="form-control bg-white text-green-800" 
+                        value={meetingTime} 
+                        onChange={(e) => setMeetingTime(e.target.value)}>
                         <option value="" disabled>Select Meeting Time</option>
                         <option value="Morning">Morning</option>
                         <option value="Afternoon">Afternoon</option>
@@ -110,7 +124,10 @@ const CreateGroupForm = () => {
                 </div>
                 <div className="form-group col-span-2">
                     <label className="text-white">Select Group Meeting Location</label>
-                    <select className="form-control bg-white text-green-800" value={location} onChange={(e) => setLocation(e.target.value)}>
+                    <select 
+                        className="form-control bg-white text-green-800" 
+                        value={location} 
+                        onChange={(e) => setLocation(e.target.value)}>
                         <option value="" disabled>Select Group Meeting Location</option>
                         <option value="Library">Library</option>
                         <option value="Student Center">Student Center</option>
@@ -121,7 +138,10 @@ const CreateGroupForm = () => {
                 </div>
                 <div className="form-group col-span-2">
                     <label className="text-white">Maximum Group Size</label>
-                    <select className="form-control bg-white text-green-800" value={groupSize} onChange={(e) => setGroupSize(e.target.value)}>
+                    <select 
+                        className="form-control bg-white text-green-800" 
+                        value={maxSize} 
+                        onChange={(e) => setMaxSize(e.target.value)}>
                         <option value="" disabled>Select The Maximum Number of Participants for your Group</option>
                         {[...Array(10).keys()].map(num => (
                             <option key={num} value={num + 1}>{num + 1}</option>
@@ -130,7 +150,13 @@ const CreateGroupForm = () => {
                 </div>
                 <div className="form-group col-span-2 checkbox-container">
                     <label className="text-white checkbox-label">
-                        <input type="checkbox" className="allow-join" id="allow-join" checked={allowJoin} onChange={(e) => setAllowJoin(e.target.checked)} />
+                        <input 
+                            type="checkbox" 
+                            className="allow-join" 
+                            id="allow-join" 
+                            checked={allowJoin} 
+                            onChange={(e) => setAllowJoin(e.target.checked)} 
+                        />
                         <span className="checkbox-text">ALLOW ANYONE TO JOIN WITHOUT APPROVAL</span>
                     </label>
                 </div>

@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import StudyGroupCard from './StudyGroupCard'; // Import the new component
+import StudyGroupCard from './StudyGroupCard';
 import axios from '../anxiosInstance';
 import customIcon from '../icons/dg-textbooks-1.png';
 import '../styles/Pagination.css';
 
-const JoinCourses = ({ setCurrentPage }) => {
+const JoinCourses = ({ setCurrentPage, setSelectedGroup }) => {
     const [courses, setCourses] = useState([]);
     const [currentPage, setCurrentPageState] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
+
+    console.log('JoinCourses.js - setCurrentPage:', setCurrentPage);
+    console.log('JoinCourses.js - setSelectedGroup:', setSelectedGroup);
 
     const fetchCourses = async (page = 1) => {
         try {
             const response = await axios.get('/study-groups', {
                 params: { page, pageSize: 8 }
             });
-            setCourses(response.data.groups); // Use response.data.groups as returned by the API
+            console.log('Fetched courses:', response.data.groups);
+            setCourses(response.data.groups); 
             setTotalPages(Math.ceil(response.data.total / 8));
         } catch (error) {
             console.error('Error fetching courses:', error);
@@ -43,7 +47,12 @@ const JoinCourses = ({ setCurrentPage }) => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {courses.length > 0 ? (
                     courses.map((course, index) => (
-                        <StudyGroupCard key={index} group={course} /> // Use StudyGroupCard component here
+                        <StudyGroupCard 
+                            key={index} 
+                            group={course} 
+                            setCurrentPage={setCurrentPage} 
+                            setSelectedGroup={setSelectedGroup}
+                        />
                     ))
                 ) : (
                     <p className="text-center">No study groups available at the moment.</p>

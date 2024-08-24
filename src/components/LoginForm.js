@@ -34,7 +34,11 @@ const LoginForm = ({ setCurrentPage }) => {
         setErrorMessage('');
         setCurrentPage('welcome'); // Redirect to the Welcome Page after login
       } else {
-        setErrorMessage('The username or password you entered is incorrect.');
+        if (response.status === 401) {
+          setErrorMessage('Your session has expired. Please log in again.');
+        } else {
+          setErrorMessage('The username or password you entered is incorrect.');
+        }
       }
     } catch (error) {
       setErrorMessage('An error occurred. Please try again later.');

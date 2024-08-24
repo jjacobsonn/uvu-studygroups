@@ -12,6 +12,7 @@ import CreateStudyGroup from './components/CreateStudyGroup';
 import LoginForm from './components/LoginForm';
 import SignUpForm from './components/SignUpForm';
 import WelcomePage from './components/WelcomePage';
+import JoinCourses from './components/JoinCourses';
 
 import './styles/index.css';
 import './styles/SearchForStudyGroups.css';
@@ -27,6 +28,10 @@ import './styles/WelcomePage.css';
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState('home');
+  const [selectedGroup, setSelectedGroup] = useState(null);
+
+  console.log('App.js - currentPage:', currentPage);
+  console.log('App.js - selectedGroup:', selectedGroup);
 
   const renderPage = () => {
     switch (currentPage) {
@@ -41,11 +46,14 @@ const App = () => {
           </>
         );
       case 'join-study-group':
-        return <JoinStudyGroup setCurrentPage={setCurrentPage} />;
+        return <JoinStudyGroup setCurrentPage={setCurrentPage} setSelectedGroup={setSelectedGroup} />;
       case 'join-group':
-        return <JoinGroup />;
+        return <JoinGroup group={selectedGroup} setCurrentPage={setCurrentPage} />;
       case 'create-study-group':
         return <CreateStudyGroup setCurrentPage={setCurrentPage} />;
+      case 'join-courses':
+        console.log('App.js - rendering JoinCourses');
+        return <JoinCourses setCurrentPage={setCurrentPage} setSelectedGroup={setSelectedGroup} />;
       case 'login':
         return <LoginForm setCurrentPage={setCurrentPage} />;
       case 'sign-up':

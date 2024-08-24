@@ -1,9 +1,20 @@
 import React from 'react';
 import '../styles/StudyGroupCard.css';
 
-const StudyGroupCard = ({ group }) => {
-  console.log('Group Data:', group); // Log the group data to check if course_name and group_name are present
-  
+const StudyGroupCard = ({ group, setCurrentPage, setSelectedGroup }) => {
+
+  console.log('StudyGroupCard.js - setSelectedGroup:', setSelectedGroup);
+
+  const handleLearnMoreClick = () => {
+    if (typeof setSelectedGroup === 'function') {
+      console.log('StudyGroupCard.js - Handling Learn More click');
+      setSelectedGroup(group);
+      setCurrentPage('join-group');
+    } else {
+      console.error('setSelectedGroup is not a function:', setSelectedGroup);
+    }
+  };
+
   return (
     <div className="study-group-card-container">
       <div className="study-group-card-content flex flex-col justify-end h-full">
@@ -13,7 +24,7 @@ const StudyGroupCard = ({ group }) => {
           </h2>
           <button 
             className="learn-more-button mt-2 bg-green-800 hover:bg-green-900 text-white font-bold py-2 px-4 rounded inline-flex items-center"
-            onClick={() => alert('Learn more about this group')}
+            onClick={handleLearnMoreClick}
           >
             Learn More
             <svg className="ml-2 w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

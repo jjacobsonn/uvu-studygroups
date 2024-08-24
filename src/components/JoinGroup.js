@@ -4,10 +4,19 @@ import StudentResources from './StudentResources';
 import '../styles/JoinGroup.css';
 import customIcon from '../icons/dg-person-7.png';
 
-const JoinGroup = () => {
+const JoinGroup = ({ group, setCurrentPage }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  if (!group) {
+    return <p>No group data available.</p>;
+  }
+
+  const handleJoinGroupClick = () => {
+    // Redirect the user to the home page when the "Join Group" button is clicked
+    setCurrentPage('home');
+  };
 
   return (
     <div className="join-group-page">
@@ -32,34 +41,36 @@ const JoinGroup = () => {
         <form className="join-group-form grid gap-4">
           <div className="form-group">
             <label className="text-white">Group Name</label>
-            <input type="text" value="College Algebra (X01)" readOnly className="form-control bg-white text-green-800" />
+            <input type="text" value={group.group_name || 'N/A'} readOnly className="form-control bg-white text-green-800" />
           </div>
           <div className="form-group">
             <label className="text-white">Course Name</label>
-            <input type="text" value="MATH1050" readOnly className="form-control bg-white text-green-800" />
+            <input type="text" value={group.course_name || 'N/A'} readOnly className="form-control bg-white text-green-800" />
           </div>
           <div className="form-group col-span-2">
             <label className="text-white">Description of Group Focus and Goals</label>
-            <textarea value="The focus of this study group is to deepen understanding of College Algebra concepts through collaborative learning and peer assistance. We will tackle a wide range of topics from linear equations to polynomial functions, ensuring each member solidifies their foundation in algebraic principles." readOnly className="form-control bg-white text-green-800" rows="4"></textarea>
+            <textarea value={group.description || 'N/A'} readOnly className="form-control bg-white text-green-800" rows="4"></textarea>
           </div>
           <div className="form-group">
             <label className="text-white">Meeting Days</label>
-            <input type="text" value="Monday & Thursday" readOnly className="form-control bg-white text-green-800" />
+            <input type="text" value={group.meeting_day || 'N/A'} readOnly className="form-control bg-white text-green-800" />
           </div>
           <div className="form-group">
             <label className="text-white">Meeting Time</label>
-            <input type="text" value="1:00pm - 3:30pm" readOnly className="form-control bg-white text-green-800" />
+            <input type="text" value={group.meeting_time || 'N/A'} readOnly className="form-control bg-white text-green-800" />
           </div>
           <div className="form-group col-span-2">
             <label className="text-white">Group Meeting Location</label>
-            <input type="text" value="Liberal Arts (LA) Building - Room (#): 205" readOnly className="form-control bg-white text-green-800" />
+            <input type="text" value={group.location || 'N/A'} readOnly className="form-control bg-white text-green-800" />
           </div>
           <div className="form-group col-span-2">
             <label className="text-white">Maximum Group</label>
-            <input type="text" value="3 / 5" readOnly className="form-control bg-white text-green-800" />
+            <input type="text" value={group.max_size !== null ? group.max_size : 'N/A'} readOnly className="form-control bg-white text-green-800" />
           </div>
           <div className="text-center col-span-2" style={{ marginTop: '1.5rem' }}>
-            <button className="btn-green">JOIN GROUP</button>
+            <button className="btn-green" type="button" onClick={handleJoinGroupClick}>
+              JOIN GROUP
+            </button>
           </div>
         </form>
       </div>

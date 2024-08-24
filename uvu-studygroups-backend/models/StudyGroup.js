@@ -4,7 +4,10 @@ const StudyGroup = {};
 
 // Create a new study group in the database
 StudyGroup.create = async (groupData) => {
-    const query = 'INSERT INTO study_groups (group_name, course_name, description, meeting_day, meeting_time, location, max_size, allow_join) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+    const query = `
+        INSERT INTO study_groups (group_name, course_name, description, meeting_day, meeting_time, location, max_size, allow_join)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `;
     return new Promise((resolve, reject) => {
         db.query(query, [
             groupData.groupName,
@@ -13,7 +16,7 @@ StudyGroup.create = async (groupData) => {
             groupData.meetingDay,
             groupData.meetingTime,
             groupData.location,
-            groupData.groupSize,
+            groupData.groupSize,   // This is where max_size is set
             groupData.allowJoin
         ], (err, result) => {
             if (err) {
