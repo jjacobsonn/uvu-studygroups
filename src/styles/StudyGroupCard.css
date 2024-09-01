@@ -1,0 +1,65 @@
+.study-group-card-container {
+    height: 300px;
+    color: #ffffff;
+    position: relative;
+    cursor: pointer;
+    background-color: #275D38;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+  
+  .study-group-card-content {
+    background: transparent;
+    transition: all 0.3s ease;
+  }
+  
+  .study-group-card-title {
+    background-color: #FFFFFF;
+    color: #275D38;
+    padding: 20px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .study-group-card-container::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 10px;
+    background-color: #275D38;
+    transform: scaleY(0);
+    transition: transform 0.3s;
+    transform-origin: bottom;
+  }
+  
+  .study-group-card-container:hover::after {
+    transform: scaleY(1);
+  }
+  
+  .learn-more-button {
+    background-color: #275D38;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .learn-more-button:hover {
+    background-color: #1e4730;
+  }  

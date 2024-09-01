@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/authRoutes');
+const studyGroupRoutes = require('./routes/studyGroupRoutes'); // Import the study group routes
 const db = require('./config/db'); // Use the connection from db.js
 
 // Load environment variables
@@ -20,12 +21,13 @@ const port = process.env.PORT || 5001;
 
 // Middleware
 app.use(bodyParser.json());
-app.use(cors({ origin: 'http://localhost:3000' })); // Allow requests from React frontend
 
-// No need to create a new connection here since it's done in db.js
+// Configure CORS to allow requests from the frontend
+app.use(cors({ origin: 'http://localhost:3000' }));
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/study-groups', studyGroupRoutes); // Add the study groups routes
 
 // Start the server
 app.listen(port, () => {

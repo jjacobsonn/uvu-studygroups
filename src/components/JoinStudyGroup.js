@@ -5,10 +5,11 @@ import SearchForStudyGroups from './SearchForStudyGroups';
 import JoinCourses from './JoinCourses';
 import StudentResources from './StudentResources';
 
-const JoinStudyGroup = ({ setCurrentPage }) => {
+const JoinStudyGroup = ({ setCurrentPage, setSelectedGroup }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+    setSelectedGroup(null);  // Reset selected group when returning to this page
+  }, [setSelectedGroup]);
 
   return (
     <div>
@@ -33,7 +34,7 @@ const JoinStudyGroup = ({ setCurrentPage }) => {
         </div>
       </div>
       <SearchForStudyGroups />
-      <JoinCourses setCurrentPage={setCurrentPage} />
+      <JoinCourses setCurrentPage={setCurrentPage} setSelectedGroup={setSelectedGroup} />
       <StudentResources />
     </div>
   );
