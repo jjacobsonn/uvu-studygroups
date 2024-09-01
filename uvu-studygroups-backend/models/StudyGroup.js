@@ -10,14 +10,14 @@ StudyGroup.create = async (groupData) => {
     `;
     return new Promise((resolve, reject) => {
         db.query(query, [
-            groupData.groupName,
-            groupData.courseName,
+            groupData.group_name,  // Corrected: group_name vs. groupName
+            groupData.course_name, // Corrected: course_name vs. courseName
             groupData.description,
-            groupData.meetingDay,
-            groupData.meetingTime,
+            groupData.meeting_day, // Corrected: meeting_day vs. meetingDay
+            groupData.meeting_time,// Corrected: meeting_time vs. meetingTime
             groupData.location,
-            groupData.groupSize,   // This is where max_size is set
-            groupData.allowJoin
+            groupData.max_size,    // Corrected: max_size vs. groupSize
+            groupData.allow_join   // Corrected: allow_join vs. allowJoin
         ], (err, result) => {
             if (err) {
                 console.error('Error creating study group:', err);
