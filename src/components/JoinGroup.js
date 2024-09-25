@@ -14,8 +14,8 @@ const JoinGroup = ({ group, setCurrentPage }) => {
   }
 
   const handleJoinGroupClick = () => {
-    // Redirect the user to the home page when the "Join Group" button is clicked
-    setCurrentPage('home');
+    // Redirect to a new page after successfully joining a group
+    setCurrentPage('joinGroupSuccess'); // Use a new success page, similar to WelcomePage.js
   };
 
   return (
