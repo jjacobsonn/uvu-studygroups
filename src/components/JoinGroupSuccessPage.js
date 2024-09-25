@@ -44,13 +44,16 @@ const JoinGroupSuccessPage = ({ setCurrentPage }) => {
           </p>
           <button
             className="btn-green w-full mx-auto mt-6 mb-4"
-            onClick={() => setCurrentPage('view-study-groups')}
+            onClick={() => setCurrentPage('join-study-group')} // Updated to redirect to JoinStudyGroup
           >
             View Study Groups
           </button>
           <button
             className="btn-green w-full mx-auto mt-4"
-            onClick={() => setCurrentPage('home')}
+            onClick={() => {
+              setCurrentPage('home');
+              window.scrollTo(0, 0); // Ensure page scrolls to the top
+            }}
           >
             Return to Home
           </button>
