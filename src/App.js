@@ -13,6 +13,9 @@ import LoginForm from './components/LoginForm';
 import SignUpForm from './components/SignUpForm';
 import WelcomePage from './components/WelcomePage';
 import JoinCourses from './components/JoinCourses';
+import GroupSuccessPage from './components/GroupSuccessPage';
+import CreateGroupForm from './components/CreateGroupForm';
+import JoinGroupSuccessPage from './components/JoinGroupSuccessPage'; // Import the new component
 
 import './styles/index.css';
 import './styles/SearchForStudyGroups.css';
@@ -25,6 +28,7 @@ import './styles/JoinGroup.css';
 import './styles/LoginForm.css';
 import './styles/SignUpForm.css';
 import './styles/WelcomePage.css';
+import './styles/JoinGroupSuccessPage.css'; // Ensure CSS for the new page is imported
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState('home');
@@ -51,6 +55,10 @@ const App = () => {
         return <JoinGroup group={selectedGroup} setCurrentPage={setCurrentPage} />;
       case 'create-study-group':
         return <CreateStudyGroup setCurrentPage={setCurrentPage} />;
+      case 'groupSuccess':
+        return <GroupSuccessPage setCurrentPage={setCurrentPage} />;
+      case 'create-group-form':
+        return <CreateGroupForm setCurrentPage={setCurrentPage} />;
       case 'join-courses':
         console.log('App.js - rendering JoinCourses');
         return <JoinCourses setCurrentPage={setCurrentPage} setSelectedGroup={setSelectedGroup} />;
@@ -60,6 +68,8 @@ const App = () => {
         return <SignUpForm setCurrentPage={setCurrentPage} />;
       case 'welcome':
         return <WelcomePage setCurrentPage={setCurrentPage} />;
+      case 'joinGroupSuccess': // Add this case for JoinGroupSuccessPage
+        return <JoinGroupSuccessPage setCurrentPage={setCurrentPage} />;
       default:
         return (
           <>
